@@ -22,7 +22,7 @@ public class Event {
      * Constructs a new {@link Event}.
      *
      * @param eventTitle is the title of the earthquake event
-     * @param eventTime is the time the earhtquake happened
+     * @param eventTime is the time the earthquake happened
      * @param eventTsunamiAlert is whether or not a tsunami alert was issued
      */
     public Event(String eventTitle, long eventTime, int eventTsunamiAlert) {

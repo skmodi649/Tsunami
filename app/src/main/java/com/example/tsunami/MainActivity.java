@@ -4,10 +4,13 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 import android.util.Log;
+import android.widget.TextView;
 
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
+
+import java.text.SimpleDateFormat;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -30,9 +33,53 @@ public class MainActivity extends AppCompatActivity {
     }
 
 
+    /**
+     * Update the screen to display information from the given {@link Event}.
+     */
+    private void updateUi(Event earthquake) {
+        // Display the earthquake title in the UI
+        TextView titleTextView = findViewById(R.id.title);
+        titleTextView.setText(earthquake.title);
+
+        // Display the earthquake date in the UI
+        TextView dateTextView = findViewById(R.id.date);
+        dateTextView.setText(getDateString(earthquake.time));
+
+        // Display whether or not there was a tsunami alert in the UI
+        TextView tsunamiTextView = findViewById(R.id.tsunami_alert);
+        tsunamiTextView.setText(getTsunamiAlertString(earthquake.tsunamiAlert));
+    }
 
 
-        /**
+    /**
+     * Returns a formatted date and time string for when the earthquake happened.
+     */
+    private String getDateString(long timeInMilliseconds) {
+        SimpleDateFormat formatter = new SimpleDateFormat("EEE, d MMM yyyy 'at' HH:mm:ss z");
+        return formatter.format(timeInMilliseconds);
+    }
+
+
+
+    /**
+     * Return the display string for whether or not there was a tsunami alert for an earthquake.
+     */
+    private String getTsunamiAlertString(int tsunamiAlert) {
+        switch (tsunamiAlert) {
+            case 0:
+                return getString(R.string.alert_no);
+            case 1:
+                return getString(R.string.alert_yes);
+            default:
+                return getString(R.string.alert_not_available);
+        }
+    }
+
+
+
+
+
+    /**
          * Return an {@link Event} object by parsing out information
          * about the first earthquake from the input earthquakeJSON string.
          */
@@ -51,6 +98,7 @@ public class MainActivity extends AppCompatActivity {
                     String title = properties.getString("title");
                     long time = properties.getLong("time");
                     int tsunamiAlert = properties.getInt("tsunami");
+
 
                     // Create a new {@link Event} object
                     return new Event(title, time, tsunamiAlert);
