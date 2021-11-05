@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">Tsunami</string>
+    <string name="header_event">header_event</string>
+    <string name="header_date">header_date</string>
+    <string name="header_tsunami_alert">header_tsunami_alert</string>
+    <string name="url"><![CDATA[https://earthquake.usgs.gov/fdsnws/event/1/query?format=geojson&starttime=2012-01-01&endtime=2012-12-01&minmagnitude=6]]></string>
+</resources>
