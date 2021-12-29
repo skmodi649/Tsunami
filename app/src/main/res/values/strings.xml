@@ -10,8 +10,8 @@
     <string name="alert_not_available">Not available</string>
 
     <string name="app_name">Tsunami</string>
-    <string name="Event">header_event</string>
-    <string name="Date">header_date</string>
-    <string name="Tsunami_Alert">header_tsunami_alert</string>
+    <string name="header_event">Event</string>
+    <string name="header_date">Date</string>
+    <string name="header_tsunami_alert">Tsunami Alert</string>
     <string name="url"><![CDATA[https://earthquake.usgs.gov/fdsnws/event/1/query?format=geojson&starttime=2012-01-01&endtime=2012-12-01&minmagnitude=6]]></string>
 </resources>
